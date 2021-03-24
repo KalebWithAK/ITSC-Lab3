@@ -18,11 +18,15 @@ new_df = filtered_df.groupby(['State'])['Confirmed'].sum().reset_index()
 new_df = new_df.sort_values(by=['Confirmed'], ascending=[False]).head(20)
 
 # Preparing data
-data = [go.Bar(x=new_df['State'], y=new_df['Confirmed'])]
+data = [
+    go.Bar(x=new_df['State'], 
+    y=new_df['Confirmed'])
+]
 
 # Preparing layout
-layout = go.Layout(title='Corona Virus Confirmed Cases in The US', xaxis_title="States",
-                   yaxis_title="Number of confirmed cases")
+layout = go.Layout(title='Corona Virus Confirmed Cases in The US', 
+    xaxis_title="States",
+    yaxis_title="Number of confirmed cases")
 
 # Plot the figure and saving in a html file
 fig = go.Figure(data=data, layout=layout)
